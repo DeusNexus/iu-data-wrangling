@@ -108,10 +108,24 @@ This time also calculation is performed how long the request took in ms to compl
 
 
 ### Websocket Stream Format
+The websocket stream yields the highest velocity of data as it arrives in real-time and in a continuous manner. For a period of 4 hours a large amount of messages is received and stored which for the 5 day window yielded over 30,000 unique entries! The processing, storage and utilization have to be determined based on the goal in mind.
 #### Data
+The following attributes as received are stored which could be interesting for various analysis.
+| timestamp | symbol | side | size | price | tickDirection | trdMatchID | grossValue | homeNotional | foreignNotional | trdType |
+| --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- |
+| 2023-07-28T16:00:01.745Z | XBTUSD | Buy | 4000 | 29375.5 | ZeroPlusTick | e1bd7555-4df1-0f28-36aa-5c0e263755ba | 13616800 | 0.136168 | 4000.0 | Regular |
 
 #### Log
-
+Due to the high velocity and constant data stream it is important to have quick and specific error messages / logging available. Real-time environments operate at fast pace and if a service goes down or large part of data is missing it can be bad for the business. The webstream pings the server at fixed interval to check if the connection is still alive, which is also seen in the log. Sometime it does occur that internet connection drops and it needs to re-establish the connection which are recorded. Errors that arise have information about the function that occured in, state of the message (OPEN/SUBSCRIBE/INFO/ACTION/HEARTBEAT). The ACTION message arrive in 2 forms (partial & insert); partial is a snapshot of for example the most recent orderbook or trades that already occured, inserts are real-time updates happening after/during the connection is established.
+| timestamp | last_update | init | num_updates | num_errors | total_pong | total_timeout | total_reconnect | func_name | state | update | message |
+| --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- |
+| 2023-07-22T16:00:03.764 | 2023-07-22 16:00:03.743766 | True | 0 | 0 | 0 | 0 | 0 | on_open | OPEN | ok | Connection opened on websocket! |
+| 2023-07-22T16:00:03.785 | 2023-07-22 16:00:03.743766 | True | 0 | 0 | 0 | 0 | 0 | on_open | SUBSCRIBE | send | "{'op': 'subscribe', 'args': ['trade:XBTUSD']}" |
+| 2023-07-22T16:00:03.816 | 2023-07-22 16:00:03.743766 | False | 0 | 0 | 0 | 0 | 0 | on_message | INFO | | "{'remaining': 179},{'info': 'Welcome to the BitMEX Realtime API.', 'version': '2.0.0', 'timestamp': '2023-07-22T16:00:03.554Z', 'docs': 'https://www.bitmex.com/app/wsAPI', 'heartbeatEnabled': False, 'limit': {'remaining': 179}}" |
+| 2023-07-22T16:00:04.311 | 2023-07-22 16:00:03.743766 | False | 0 | 0 | 0 | 0 | 0 | on_message | SUBSCRIBE | true | trade:XBTUSD |
+| 2023-07-22T16:00:04.326 | 2023-07-22 16:00:03.743766 | False | 1 | 0 | 0 | 0 | 0 | on_message | ACTION | partial |
+| 2023-07-22T16:00:05.841 | 2023-07-22 16:00:03.743766 | False | 2 | 0 | 0 | 0 | 0 | on_message | ACTION | insert |
+| 2023-07-22T16:00:06.152 | 2023-07-22 16:00:03.743766 | False | 3 | 0 | 0 | 0 | 0 | on_message | ACTION | insert |
 
 ## After Data Collection
 In the example we collected 5 days worth of data using automated cron tasks. No side effects or anomalies were detected in the log files which takes us to the next step of reading all csv files and combining them in a single HDF5 file. This can be done in the hdf5 folder using the following command and will output the file 'data_collection.h5' in the same directory:
