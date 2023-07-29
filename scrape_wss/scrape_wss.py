@@ -14,6 +14,10 @@ import atexit
 import sys
 import time
 import json
+import os
+
+# Python file location
+script_dir = os.path.dirname(__file__)
 
 # Flag to indicate if the program should terminate
 terminate_flag = False
@@ -23,7 +27,6 @@ op = 'subscribe'
 trade = 'XBTUSD'
 subscribe = "{"+f'"op": "{op}", "args": ["trade:{trade}"]'+"}"
 terminate_timeout = 4 * 60 * 60 # 4 hours * 60 minutes * 60 seconds
-path = '/home/fox/Desktop/Study/In-Progress/DataWrangling/'
 
 state = {
     'last_update':datetime.utcnow(),
@@ -61,9 +64,10 @@ def log(func_name='', state='', update='', message=''):
 def write_file(data):
     #New filename for current session
     file_name = 'data_'+state['file_name']
+    write_data = os.path.join(script_dir, './data/') + file_name
 
     if(not state['init_data']):
-        with open(path+'/Project/scrape_wss/data/'+file_name,mode='w') as file:
+        with open(write_data,mode='w') as file:
             types = {
                 'timestamp': 'timestamp', 
                 'symbol': 'symbol', 
@@ -85,7 +89,7 @@ def write_file(data):
     
     #CSV header has been written and file exists
     if(state['init_data']):
-        with open(path+'/Project/scrape_wss/data/'+file_name,mode='a') as file:
+        with open(write_data,mode='a') as file:
             for trade in data:
                 values = list(trade.values())
                 row = '\n' + ','.join(map(str, values)) 
@@ -95,9 +99,10 @@ def write_file(data):
 def write_log(_func_name='', _state='', _update='', _message=''):
     #New filename for current session
     file_name = 'log_'+state['file_name']
+    write_logs = os.path.join(script_dir, './logs/') + file_name
 
     if(not state['init_log']):
-        with open(path+'/Project/scrape_wss/logs/'+file_name,mode='w') as file:
+        with open(write_logs,mode='w') as file:
             file.write('timestamp, last_update, init, num_updates, num_errors, total_pong, total_timeout, total_reconnect, func_name, state, update, message')
             print('Created log file!')
         state['init_log'] = True
@@ -106,7 +111,7 @@ def write_log(_func_name='', _state='', _update='', _message=''):
     if(state['init_log']):
         #If it exists, add new entries using append
         print('Appended to log file!')
-        with open(path+'/Project/scrape_wss/logs/'+file_name,mode='a') as file:
+        with open(write_logs,mode='a') as file:
             timestamp = datetime.utcnow().isoformat()
             # timestamp, last_update, init, num_updates, num_errors, total_pong, total_timeout, total_reconnect, func_name, state, update, message
 

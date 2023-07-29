@@ -2,6 +2,7 @@
 The following code is used to access the API of the website ... that offers financial data on cryptocurrency related assets. After reading the documentation, which can be found here ..., the script makes a request to the websever and authenticates (?) using a web-token to obtain access.
 '''
 
+import os
 import requests
 from datetime import datetime
 import time
@@ -22,7 +23,9 @@ https://www.coingecko.com/en/api/documentation
 currency = 'bitcoin'
 data = 'ohlc'
 api_url = f'https://api.coingecko.com/api/v3/coins/{currency}/{data}?vs_currency=usd&days=1&precision=2' #Get the latest 24H OHLC data for bitcoin versus usd, precision rounded to 2 decimals.
-path='/home/fox/Desktop/Study/In-Progress/DataWrangling'
+
+# Python file location
+script_dir = os.path.dirname(__file__)
 
 out_file_name = f'api_coingecko_{currency}_{data}_{datetime.utcnow().isoformat()}.csv'
 
@@ -62,12 +65,14 @@ def get_api(src)->None:
             log('get_api','OK',res.status_code,res_json)
 
             #Convert api data to a pandas dataframe and export as csv
+            write_data = os.path.join(script_dir, './data/data_')
             df_api = get_dataframe_api(state)
-            df_api.to_csv(path+'/Project/scrape_api/data/data_'+out_file_name, index=False)
+            df_api.to_csv(write_data+out_file_name, index=False)
 
             #Save the state to the logs and export to csv
+            write_log = os.path.join(script_dir, './logs/log_')
             df_log = get_dataframe_log(state)
-            df_log.to_csv(path+'/Project/scrape_api/logs/log_'+out_file_name,index=False)
+            df_log.to_csv(write_log+out_file_name,index=False)
 
         else:
             #Set state values
@@ -82,8 +87,9 @@ def get_api(src)->None:
             print(state)
 
             #Save the state to the logs and export as csv
+            write_log = os.path.join(script_dir, './logs/log_')
             df_log2 = get_dataframe_log(state)
-            df_log2.to_csv(path+'/Project/scrape_api/logs/log_'+out_file_name,index=False)
+            df_log2.to_csv(write_log+out_file_name,index=False)
             
     except Exception as e:
         #Set state values
@@ -97,7 +103,8 @@ def get_api(src)->None:
 
         #Save the state to the logs
         df_log3 = get_dataframe_log(state)
-        df_log3.to_csv(path+'/Project/scrape_api/logs/log_'+out_file_name,index=False)
+        write_log = os.path.join(script_dir, './logs/log_')
+        df_log3.to_csv(write_log+out_file_name,index=False)
 
 def get_dataframe_api(state)->pd.DataFrame():
     df = pd.DataFrame(

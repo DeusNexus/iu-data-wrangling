@@ -1,14 +1,21 @@
 # load packages
 import requests
 import json
-from datetime import datetime
-from bs4 import BeautifulSoup as bs
-import warnings
+import os
 import re
+from datetime import datetime
+import warnings
+from bs4 import BeautifulSoup as bs
 import pandas as pd
 import numpy as np
 
+import traceback
+
+# Source URL
 url='https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.atom'
+
+# Python file location
+script_dir = os.path.dirname(__file__)
 
 #Supress Warnings
 warnings.filterwarnings("ignore", category=UserWarning, module='bs4')
@@ -76,7 +83,7 @@ def main():
                         
             # Summary has dl which contains 3 dt (Time,Location,Depth) 
             # and 4 dd (2 time 'children', 1 location 'child' and 1 depth 'child')
-            dl = summary.dl
+            dl = summary # Appearently it no longer has a .dl item
 
             # dt = dl.find_all('dt') # Should be a list of 3
             # print(dt)
@@ -189,22 +196,27 @@ def main():
 
     #If any errors occur in the try-block we want to know what the origin is while we interact with the beautifulsoup object
     except Exception as e:
+            print(traceback.format_exc())
             model_output['bs_error'] = e
             model_output['execution_time_ms'] = 1000 * (datetime.now().timestamp() - datetime.strptime(model_output['timestamp'],'%Y-%m-%dT%H:%M:%S.%f').timestamp())
 
 #Return df
 df = main()
 # Print out log info
-print(model_output)
-
-# Paths for saving files
-path = '/home/fox/Desktop/Study/In-Progress/DataWrangling'
-path_log = path + '/Project/scrape_html/logs/'
-path_data = path + '/Project/scrape_html/data/'
+# print(model_output)
 
 # Save log to logs folder
 file_name_log = f'log_api_earthquake_ugsg_gov_{datetime.utcnow().isoformat()}.csv'
-with open(path_log+file_name_log,mode='w') as file:
+
+# Save data to data folder
+file_name_data = f'data_api_earthquake_ugsg_gov_{datetime.utcnow().isoformat()}.csv'
+
+# Paths for saving files
+write_log = os.path.join(script_dir, './logs/') + file_name_log
+write_data = os.path.join(script_dir, './data/') + file_name_data
+
+
+with open(write_log,mode='w') as file:
     keys = list(model_output.keys())
     values = list(model_output.values())
     header = ','.join(keys) 
@@ -212,8 +224,7 @@ with open(path_log+file_name_log,mode='w') as file:
     lines = header + row
     file.write(lines)
 
-# Save data to data folder
-file_name_data = f'data_api_earthquake_ugsg_gov_{datetime.utcnow().isoformat()}.csv'
+
 if(df is not None):
     # Write out the df to csv
-    df.to_csv(path_data+file_name_data,index=False)
+    df.to_csv(write_data,index=False)
