@@ -23,9 +23,11 @@ In this task, you demonstrate your web scraping skills to collect information fr
 The scripts provides users to scrape websites in a versatile manner and serve as examples as the structure of sites can differ. It only serves as Educational purposes in the context of the course DLBDSDQDW01 from IU.
 
 Collected data comes in different formats and it's important to recognize the different types and structures it comes in. By utilizing various modules in Python the data is transformed in the desired format and written to a final HDF5 file which is frequently used in big data for storing large amount of information. As seen in the following image, which shows all csv's loaded into DataFrames:
+
 ![Alt text](csv2df.png?raw=true "Dataframes")
 
 Tools like HDFView can be used to view the HDF5 file written by Pandas, which shows all our collected data in tables:
+
 ![Alt text](HDFView.png?raw=true "Dataframes")
 
 Lastly, the data is investigated briefly using summary statistics and visualizations to ensure that it is error free, appropiate for further use (e.g. data analysis) and to make the temporal changes visible that are obtained by scraping the web. A final reflection is made to discuss and conclude the process that was used in context with other best practises and examples from the literature.
@@ -81,12 +83,12 @@ API requests are made using `requests` library and returned in `json` format.
 #### Data
 The data is mostly kept as it is with the following columns (example):
 | timestamp | open | high | low | close |
-| --------- | ---- | ---- | --- | ----- |
+| --------- | --------- | --------- | --------- | --------- |
 | 2023-07-21 16:30:00 | 29861.85 | 29865.07 | 29829.82 | 29829.82 |
 #### Log
 For the log we save the start datetime, response datetime, error, status code and if it was successfull
 | start_dt | response_dt | error | status_code | success |
-| -------- | ----------- | ----- | ----------- | ------- |
+| --------- | --------- | --------- | --------- | --------- |
 | 2023-07-22 16:00:02.099107 | 2023-07-22 16:00:03.981783 | '' | 200 | True |
 
 ### HTML Format
