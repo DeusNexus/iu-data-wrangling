@@ -49,16 +49,18 @@ Example to run WSS:
 ## Using cron (example)
 # Runs single process once
 `0 12 * * * python3 /home/user/DataWrangling/Project/scrape_api/scrape_api.py`
+
 `0 0 * * * python3 /home/user/DataWrangling/Project/scrape_api/scrape_api.py`
 
 # Runs a stream that terminates after 4 hours
 `0 12 * * * python3 /home/user/DataWrangling/Project/scrape_wss/scrape_wss.py`
+
 `0 0 * * * python3 /home/user/DataWrangling/Project/scrape_wss/scrape_wss.py`
 
 # Runs single process once
 `0 12 * * * python3 /home/user/DataWrangling/Project/scrape_html/scrape_html.py`
-`0 0 * * * python3 /home/user/DataWrangling/Project/scrape_html/scrape_html.py`
 
+`0 0 * * * python3 /home/user/DataWrangling/Project/scrape_html/scrape_html.py`
 
 ## Data Collection
 The processes will each output 2 files (or 1 in case of error in the logs) which are stored in the data and logs folder respectively. The logs will contain information about successfull responses and errors that have occured.
