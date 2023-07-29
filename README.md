@@ -97,10 +97,15 @@ From the HTML structure a lot of data has been extracted, some of which is enric
 In the script file regex is also used to match certain strings to extract kilometers and miles respecificly or number of reports.
 | id | title | updated | link_href | num_of_reports | time_utc | time_utc_at_epicenter | location_coordinates | depth_string | depth_km | depth_mi | georss_point | georss_elev | cat_age |cat_mag | cat_mag_shaking | cat_mag_damage | cat_contributor | cat_author |
 | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- |--------- | --------- | --------- | --------- | --------- |
-| urn:earthquake-usgs-gov:us:7000khmu | M 4.7 - South Sandwich Islands region | 2023-07-22T15:51:37.040Z | https://earthquake.usgs.gov/earthquakes/eventpage/us7000khmu | | 2023-07-22 15:03:30 UTC | 2023-07-22 15:03:30 UTC | 57.942°S 25.376°W | 56.33 km (35.00 mi) | 56.33 | 35.00 | -57.9422 -25.3756 | -56326 | Past Hour | Magnitude 4 | Light | None | us | us |
-
+| urn:earthquake-usgs-gov:us:7000khmu | M 4.7 - South Sandwich Islands region | 2023-07-22T15:51:37.040Z | https://earthquake.usgs.gov/earthquakes/eventpage/us7000khmu | 5 | 2023-07-22 15:03:30 UTC | 2023-07-22 15:03:30 UTC | 57.942°S 25.376°W | 56.33 km (35.00 mi) | 56.33 | 35.00 | -57.9422 -25.3756 | -56326 | Past Hour | Magnitude 4 | Light | None | us | us |
 
 #### Log
+The log is simpler, any error catched while parsing the HTML structure is saved so one can look back later what went wrong including the data which is saved under the data column.
+This time also calculation is performed how long the request took in ms to complete, optional attributes like this can be included if desired.
+| timestamp | url | err_msg | err_obj | data | req_status | method | execution_time_ms |
+| --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- |
+| 2023-07-23T00:00:03.369724 | https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.atom | OK | None | "<?xml version='1.0' encoding='UTF-8'?><html><body><feed xmlns='http://www.w3.org/2005/Atom' xmlns:georss='http://www.georss.org/georss'>...</feed></body></html>" | 200 | request-beatifulsoup | 20.889997482299805 |
+
 
 ### Websocket Stream Format
 #### Data
