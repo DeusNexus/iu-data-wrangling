@@ -116,7 +116,11 @@ The following attributes as received are stored which could be interesting for v
 | 2023-07-28T16:00:01.745Z | XBTUSD | Buy | 4000 | 29375.5 | ZeroPlusTick | e1bd7555-4df1-0f28-36aa-5c0e263755ba | 13616800 | 0.136168 | 4000.0 | Regular |
 
 #### Log
-Due to the high velocity and constant data stream it is important to have quick and specific error messages / logging available. Real-time environments operate at fast pace and if a service goes down or large part of data is missing it can be bad for the business. The webstream pings the server at fixed interval to check if the connection is still alive, which is also seen in the log. Sometime it does occur that internet connection drops and it needs to re-establish the connection which are recorded. Errors that arise have information about the function that occured in, state of the message (OPEN/SUBSCRIBE/INFO/ACTION/HEARTBEAT). The ACTION message arrive in 2 forms (partial & insert); partial is a snapshot of for example the most recent orderbook or trades that already occured, inserts are real-time updates happening after/during the connection is established.
+Due to the high velocity and constant data stream it is important to have quick and specific error messages / logging available. Real-time environments operate at fast pace and if a service goes down or large part of data is missing it can be bad for the business. The webstream pings the server at fixed interval to check if the connection is still alive, which is also seen in the log. Sometime it does occur that internet connection drops and it needs to re-establish the connection which are recorded. 
+
+Errors that arise have information about the function that occured in, state of the message (OPEN/SUBSCRIBE/INFO/ACTION/HEARTBEAT). 
+
+The ACTION message arrive in 2 forms (partial & insert); partial is a snapshot of for example the most recent orderbook or trades that already occured, inserts are real-time updates happening after/during the connection is established.
 | timestamp | last_update | init | num_updates | num_errors | total_pong | total_timeout | total_reconnect | func_name | state | update | message |
 | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- |
 | 2023-07-22T16:00:03.764 | 2023-07-22 16:00:03.743766 | True | 0 | 0 | 0 | 0 | 0 | on_open | OPEN | ok | Connection opened on websocket! |
