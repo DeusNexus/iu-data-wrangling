@@ -1,0 +1,11 @@
+# Runs single process once
+0 12 * * * python3 /home/user/DataWrangling/Project/scrape_api/scrape_api.py
+0 0 * * * python3 /home/user/DataWrangling/Project/scrape_api/scrape_api.py
+
+# Runs a stream that has to self-terminate after x hours
+0 12 * * * python3 /home/user/DataWrangling/Project/scrape_wss/scrape_wss.py
+0 0 * * * python3 /home/user/DataWrangling/Project/scrape_wss/scrape_wss.py
+
+# Runs single process once
+0 12 * * * python3 /home/user/DataWrangling/Project/scrape_html/scrape_html.py
+0 0 * * * python3 /home/user/DataWrangling/Project/scrape_html/scrape_html.py

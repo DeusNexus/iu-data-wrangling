@@ -1,0 +1,23 @@
+2023-07-13T04:53:38.710405 <on_open> [OPEN][OK]:
+Connection opened on websocket!
+
+2023-07-13T04:53:38.741306 <on_message> [INFO][{'remaining': 179}]:
+{'info': 'Welcome to the BitMEX Realtime API.', 'version': '2.0.0', 'timestamp': '2023-07-13T04:53:38.570Z', 'docs': 'https://www.bitmex.com/app/wsAPI', 'heartbeatEnabled': False, 'limit': {'remaining': 179}}
+
+2023-07-13T04:53:38.954357 <on_message> [SUBSCRIBE][trade:XBTUSD]:
+{'success': True, 'subscribe': 'trade:XBTUSD', 'request': {'op': 'subscribe', 'args': ['trade:XBTUSD']}}
+
+2023-07-13T04:54:22.884142 <on_message> [ACTION][partial]:
+{'table': 'trade', 'action': 'partial', 'keys': [], 'types': {'timestamp': 'timestamp', 'symbol': 'symbol', 'side': 'symbol', 'size': 'long', 'price': 'float', 'tickDirection': 'symbol', 'trdMatchID': 'guid', 'grossValue': 'long', 'homeNotional': 'float', 'foreignNotional': 'float', 'trdType': 'symbol'}, 'filter': {'symbol': 'XBTUSD'}, 'data': [{'timestamp': '2023-07-13T04:52:32.486Z', 'symbol': 'XBTUSD', 'side': 'Sell', 'size': 100, 'price': 30280.5, 'tickDirection': 'PlusTick', 'trdMatchID': '488e69b0-1f64-bc99-c4ea-9f31bf10f020', 'grossValue': 330246, 'homeNotional': 0.00330246, 'foreignNotional': 100.0, 'trdType': 'Regular'}]}
+
+2023-07-13T04:54:22.915338 <on_message> [ACTION][insert]:
+{'table': 'trade', 'action': 'insert', 'data': [{'timestamp': '2023-07-13T04:54:22.735Z', 'symbol': 'XBTUSD', 'side': 'Sell', 'size': 700, 'price': 30280.5, 'tickDirection': 'ZeroPlusTick', 'trdMatchID': '99ec6483-d7f7-8762-2b7e-7da38273d995', 'grossValue': 2311722, 'homeNotional': 0.02311722, 'foreignNotional': 700.0, 'trdType': 'Regular'}, {'timestamp': '2023-07-13T04:54:22.735Z', 'symbol': 'XBTUSD', 'side': 'Sell', 'size': 3600, 'price': 30280.5, 'tickDirection': 'ZeroPlusTick', 'trdMatchID': '47c73ae2-e9cf-51be-8be5-d61e8af62271', 'grossValue': 11888856, 'homeNotional': 0.11888856, 'foreignNotional': 3600.0, 'trdType': 'Regular'}, {'timestamp': '2023-07-13T04:54:22.735Z', 'symbol': 'XBTUSD', 'side': 'Sell', 'size': 12000, 'price': 30280.5, 'tickDirection': 'ZeroPlusTick', 'trdMatchID': '2b065798-27f3-80ab-e1a7-6fad183f45f3', 'grossValue': 39629520, 'homeNotional': 0.3962952, 'foreignNotional': 12000.0, 'trdType': 'Regular'}, {'timestamp': '2023-07-13T04:54:22.735Z', 'symbol': 'XBTUSD', 'side': 'Sell', 'size': 11100, 'price': 30280.5, 'tickDirection': 'ZeroPlusTick', 'trdMatchID': '9c7522f9-147a-2cd8-8dbe-95f6973b0e6d', 'grossValue': 36657306, 'homeNotional': 0.36657306, 'foreignNotional': 11100.0, 'trdType': 'Regular'}]}
+
+2023-07-13T04:54:31.935251 <on_message> [ACTION][insert]:
+{'table': 'trade', 'action': 'insert', 'data': [{'timestamp': '2023-07-13T04:54:31.787Z', 'symbol': 'XBTUSD', 'side': 'Sell', 'size': 100, 'price': 30280.0, 'tickDirection': 'MinusTick', 'trdMatchID': 'eb192964-217a-2864-6e37-e8cceb87a7c3', 'grossValue': 330251, 'homeNotional': 0.00330251, 'foreignNotional': 100.0, 'trdType': 'Regular'}]}
+
+2023-07-13T04:54:33.455315 <on_message> [ACTION][insert]:
+{'table': 'trade', 'action': 'insert', 'data': [{'timestamp': '2023-07-13T04:54:33.298Z', 'symbol': 'XBTUSD', 'side': 'Sell', 'size': 700, 'price': 30280.0, 'tickDirection': 'ZeroMinusTick', 'trdMatchID': '80d6b6ad-ba34-a6eb-0a91-13699b1db94d', 'grossValue': 2311757, 'homeNotional': 0.02311757, 'foreignNotional': 700.0, 'trdType': 'Regular'}]}
+
+2023-07-13T04:55:00.454059 <on_message> [ACTION][insert]:
+{'table': 'trade', 'action': 'insert', 'data': [{'timestamp': '2023-07-13T04:55:00.294Z', 'symbol': 'XBTUSD', 'side': 'Sell', 'size': 800, 'price': 30279.5, 'tickDirection': 'MinusTick', 'trdMatchID': 'b1d74f48-0504-d851-ceda-623a7ab55d40', 'grossValue': 2642048, 'homeNotional': 0.02642048, 'foreignNotional': 800.0, 'trdType': 'Regular'}, {'timestamp': '2023-07-13T04:55:00.294Z', 'symbol': 'XBTUSD', 'side': 'Sell', 'size': 6700, 'price': 30279.5, 'tickDirection': 'ZeroMinusTick', 'trdMatchID': '384e14d7-58f3-829b-fb30-a56146336634', 'grossValue': 22127152, 'homeNotional': 0.22127152, 'foreignNotional': 6700.0, 'trdType': 'Regular'}]}

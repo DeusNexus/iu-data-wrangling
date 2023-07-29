@@ -1,0 +1,4 @@
+url, name, scrape_type, frequency, time1, time2, method
+https://earthquake.usgs.gov/earthquakes/map/?extent=10.61742,-142.60254&extent=58.53959,-47.41699, earthquakes, scrape_html, 2x daily, 12:00, 00:00, beautifulsoup
+https://api.coingecko.com/api/v3/coins/bitcoin/ohlc?vs_currency=usd&days=1&precision=2, coingecko, scrape_api, 2x daily, 12:00, 00:00, requests/api
+wss://ws.bitmex.com/realtime, bitmex, scrape_wss, 2x daily, 12:00-16:00, 00:00-04:00, webstream socket
