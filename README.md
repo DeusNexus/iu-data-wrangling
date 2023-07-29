@@ -47,17 +47,17 @@ Example to run WSS:
 `python3 scrape_wss.py`
 
 ## Using cron (example)
-# Runs single process once
+### Runs single process once
 `0 12 * * * python3 /home/user/DataWrangling/Project/scrape_api/scrape_api.py`
 
 `0 0 * * * python3 /home/user/DataWrangling/Project/scrape_api/scrape_api.py`
 
-# Runs a stream that terminates after 4 hours
+### Runs a stream that terminates after 4 hours
 `0 12 * * * python3 /home/user/DataWrangling/Project/scrape_wss/scrape_wss.py`
 
 `0 0 * * * python3 /home/user/DataWrangling/Project/scrape_wss/scrape_wss.py`
 
-# Runs single process once
+### Runs single process once
 `0 12 * * * python3 /home/user/DataWrangling/Project/scrape_html/scrape_html.py`
 
 `0 0 * * * python3 /home/user/DataWrangling/Project/scrape_html/scrape_html.py`
