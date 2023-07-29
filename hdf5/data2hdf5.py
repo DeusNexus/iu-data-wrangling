@@ -5,15 +5,18 @@ from model import model
 # Declare root directory
 root_dir = '/home/fox/Desktop/Project'
 
+# Python file location
+script_dir = os.path.dirname(__file__)
+
 # Declare data dirs
-data_scrape_dir = root_dir + '/scrape_api/data/'
-data_html_dir = root_dir + '/scrape_html/data/'
-data_wss_dir = root_dir + '/scrape_wss/data/'
+data_scrape_dir = os.path.join(script_dir, '../scrape_api/data/')
+data_html_dir = os.path.join(script_dir, '../scrape_html/data/')
+data_wss_dir = os.path.join(script_dir, '../scrape_wss/data/')
 
 # Declare log dirs
-logs_scrape_dir = root_dir + '/scrape_api/logs/'
-logs_html_dir = root_dir + '/scrape_html/logs/'
-logs_wss_dir = root_dir + '/scrape_wss/logs/'
+logs_scrape_dir = os.path.join(script_dir, '../scrape_api/logs/')
+logs_html_dir = os.path.join(script_dir, '../scrape_html/logs/')
+logs_wss_dir = os.path.join(script_dir, '../scrape_wss/logs/')
 
 # Init dict for holding unique file names and paths
 file_tree = {
