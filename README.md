@@ -93,6 +93,12 @@ For the log we save the start datetime, response datetime, error, status code an
 
 ### HTML Format
 #### Data
+From the HTML structure a lot of data has been extracted, some of which is enriched using diagram from their official page (e.g. the magnitude shaking, magnitude damage).
+In the script file regex is also used to match certain strings to extract kilometers and miles respecificly or number of reports.
+| id | title | updated | link_href | num_of_reports | time_utc | time_utc_at_epicenter | location_coordinates | depth_string | depth_km | depth_mi | georss_point | georss_elev | cat_age |cat_mag | cat_mag_shaking | cat_mag_damage | cat_contributor | cat_author |
+| --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- |--------- | --------- | --------- | --------- | --------- |
+| urn:earthquake-usgs-gov:us:7000khmu | M 4.7 - South Sandwich Islands region | 2023-07-22T15:51:37.040Z | https://earthquake.usgs.gov/earthquakes/eventpage/us7000khmu | | 2023-07-22 15:03:30 UTC | 2023-07-22 15:03:30 UTC | 57.942°S 25.376°W | 56.33 km (35.00 mi) | 56.33 | 35.00 | -57.9422 -25.3756 | -56326 | Past Hour | Magnitude 4 | Light | None | us | us |
+
 
 #### Log
 
