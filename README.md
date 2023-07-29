@@ -46,7 +46,7 @@ Example to run HTML:
 Example to run WSS:
 `python3 scrape_wss.py`
 
-## Using cron (example)
+## Using cron (example at 12:00PM and 00:00AM)
 ### Runs single process once
 `0 12 * * * python3 /home/user/DataWrangling/Project/scrape_api/scrape_api.py`
 
