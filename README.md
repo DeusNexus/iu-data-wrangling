@@ -20,7 +20,6 @@ In this task, you demonstrate your web scraping skills to collect information fr
 The scripts provides users to scrape websites in a versatile manner and serve as examples as the structure of sites can differ. It only serves as Educational purposes in the context of the course DLBDSDQDW01 from IU.
 Collected data comes in different formats and it's important to recognize the different types and structures it comes in. By utilizing various modules in Python the data is transformed in the desired format and written to a final HDF5 file which is frequently used in big data for storing large amount of information. Lastly, the data is investigated briefly using summary statistics and visualizations to ensure that it is error free, appropiate for further use (e.g. data analysis) and to make the temporal changes visible that are obtained by scraping the web. A final reflection is made to discuss and conclude the process that was used in context with other best practises and examples from the literature.
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 # Development Planning of the 3 webscrape techniques - UML Schemas
 ## Flow Diagram
 ![Alt text](UML.jpg?raw=true "UML Flow Diagram")
@@ -49,16 +48,16 @@ Example to run WSS:
 
 ## Using cron (example)
 # Runs single process once
-0 12 * * * python3 /home/user/DataWrangling/Project/scrape_api/scrape_api.py
-0 0 * * * python3 /home/user/DataWrangling/Project/scrape_api/scrape_api.py
+`0 12 * * * python3 /home/user/DataWrangling/Project/scrape_api/scrape_api.py`
+`0 0 * * * python3 /home/user/DataWrangling/Project/scrape_api/scrape_api.py`
 
 # Runs a stream that terminates after 4 hours
-0 12 * * * python3 /home/user/DataWrangling/Project/scrape_wss/scrape_wss.py
-0 0 * * * python3 /home/user/DataWrangling/Project/scrape_wss/scrape_wss.py
+`0 12 * * * python3 /home/user/DataWrangling/Project/scrape_wss/scrape_wss.py`
+`0 0 * * * python3 /home/user/DataWrangling/Project/scrape_wss/scrape_wss.py`
 
 # Runs single process once
-0 12 * * * python3 /home/user/DataWrangling/Project/scrape_html/scrape_html.py
-0 0 * * * python3 /home/user/DataWrangling/Project/scrape_html/scrape_html.py
+`0 12 * * * python3 /home/user/DataWrangling/Project/scrape_html/scrape_html.py`
+`0 0 * * * python3 /home/user/DataWrangling/Project/scrape_html/scrape_html.py`
 
 
 ## Data Collection
