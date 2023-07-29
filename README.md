@@ -8,7 +8,7 @@ We will learn different techniques to obtain data that will be the basis for man
 The following scripts use the following core modules like `requests`, `websocket`, `bs4` to obtain data in various ways. E.g. scraping html pages, authorized API access and utilizing websocket streams.
 
 ## Assignment
-1.2 Task 2: Scrape the Web
+**1.2 Task 2: Scrape the Web**
 
 You work for an organization which regularly consults several webpages to be informed in order to make key decisions. These web pages list numbers and tables which help decision makers in your organization to make informed decisions about strategic directions to be pursued. This process is conducted daily and manually and you start wondering if this might be better handled by an automated process. In addition, the question has been raised repeatedly within your organization if it is enough to only make decisions based on the most recent information or if it were better to also take a glimpse at the development of values over time.
 In this task, you demonstrate your web scraping skills to collect information from several web pages, extract the relevant numeric information and save the results in a format which allows for time series considerations.
