@@ -136,19 +136,25 @@ In the example we collected 5 days worth of data using automated cron tasks. No 
 `python3 data2hdf5.py`
 
 ## Visualization of Temporal Developments
-The main focus is on the collected `data` albeit it's also great to explore the `logs` for any potential insights regarding errors, optimization and general understanding of how the data collection process materialized. For each of the different scrape methods visualization have been created which allow us to reflect on the characteristics of the data obtained.
+The main focus is on the collected `data` albeit it's also great to explore the `logs` for any potential insights regarding errors, optimization and general understanding of how the data collection process materialized. For each of the different scrape methods visualization have been created which allow us to reflect on the characteristics of the data obtained. Data scraped twice a day, some of the data has overlapping entries since the newly added information might contain data that was already present in an early scrape. Loaded from HDF5 to Pandas DataFrame, duplicates have been removed at the stage when the HDF5 file was created. 
 
-### API Plots
-Data scraped twice a day, some of the data has overlapping entries since the newly added information might contain data that was already present in an early scrape.
-Loaded from HDF5 to Pandas DataFrame, duplicates have been removed at the stage when the HDF5 file was created. Since we are interested in the temporal developments the `timestamp` column is used on x-axis as datetime format.
-There serveral features to chose from but for simplicty the `close` source was used to show the price developments. To emphasize the added value of scraping multiple times each obtained window is displayed in it's own color. We are now able to take a larger scope of price developments in consideration which enhances our understanding, decision making and improves statistical confidence.
+### API Plot
+Since we are interested in the temporal developments the `timestamp` column is used on x-axis as datetime format.
+There serveral features to chose from but for simplicty the `close` source was used to show the price developments. To emphasize the added value of scraping multiple times each obtained window is displayed in it's own color. We are now able to take a larger scope of price developments in consideration which enhances our understanding, decision making and improves statistical confidence. Here each new batch is made visible by using vertical lines that show how new data is added.
 
 ![Alt text](./visualization/API_visual.png?raw=true "API Visualisation")
 
-### HTML Plots
+### HTML Plot
+Here for temporal developments the `updated` column is used. 
+From all the features the location coordinates and the dates are what is most important about the collected data. In this map plot we can see how new earthquakes were added based on the changing color which is depicted in the dates below. Without the daily scraping many observations would be left out and with further analyis lead to a lack of data if one is trying to predict new earthquake events.
+
 ![Alt text](./visualization/HTML_visual.png?raw=true "HTML Visualisation")
 
-### Websocket Plots
+### Websocket Plot
+The `timestamp` column is used on x-axis similar to the API plot. A major difference with the websocket is that the connection is continuous and sometimes drops.
+Each session that the websocket is connected is indicated by vertical lines. Furthermore, after the high velocity of data is done (4 hours) the data does not have any new values and shows 'no trend' until new session starts.
+What makes websocket streams powerful is the amount of data received in real-time and the missing values between sessions indicate that these also require additional awareness on how to deal with missing values or maintaining a good connection in general.
+
 ![Alt text](./visualization/WSS_visual.png?raw=true "WSS Visualisation")
 
 # Example Data
