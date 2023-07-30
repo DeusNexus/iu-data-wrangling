@@ -135,6 +135,24 @@ The ACTION message arrive in 2 forms (partial & insert); partial is a snapshot o
 In the example we collected 5 days worth of data using automated cron tasks. No side effects or anomalies were detected in the log files which takes us to the next step of reading all csv files and combining them in a single HDF5 file. This can be done in the hdf5 folder using the following command and will output the file 'data_collection.h5' in the same directory:
 `python3 data2hdf5.py`
 
+## Visualization of Temporal Developments
+The main focus is on the collected `data` albeit it's also great to explore the `logs` for any potential insights regarding errors, optimization and general understanding of how the data collection process materialized. For each of the different scrape methods visualization have been created which allow us to reflect on the characteristics of the data obtained.
+
+### API Plots
+Data scraped twice a day, some of the data has overlapping entries since the newly added information might contain data that was already present in an early scrape.
+Loaded from HDF5 to Pandas DataFrame, duplicates have been removed at the stage when the HDF5 file was created. Since we are interested in the temporal developments the `timestamp` column is used on x-axis as datetime format.
+There serveral features to chose from but for simplicty the `close` source was used to show the price developments. To emphasize the added value of scraping multiple times each obtained window is displayed in it's own color. We are now able to take a larger scope of price developments in consideration which enhances our understanding, decision making and improves statistical confidence.
+
+<INSERT IMAGES BELOW>
+
+### HTML Plots
+
+<INSERT IMAGES BELOW>
+
+### Websocket Plots
+
+<INSERT IMAGES BELOW>
+
 # Example Data
 Each scrape_ folder also contains a snippet of data of what we expect to receive and can be used to understand the structure of the data.
 
