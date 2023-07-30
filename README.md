@@ -143,15 +143,13 @@ Data scraped twice a day, some of the data has overlapping entries since the new
 Loaded from HDF5 to Pandas DataFrame, duplicates have been removed at the stage when the HDF5 file was created. Since we are interested in the temporal developments the `timestamp` column is used on x-axis as datetime format.
 There serveral features to chose from but for simplicty the `close` source was used to show the price developments. To emphasize the added value of scraping multiple times each obtained window is displayed in it's own color. We are now able to take a larger scope of price developments in consideration which enhances our understanding, decision making and improves statistical confidence.
 
-<INSERT IMAGES BELOW>
+![Alt text](./visualization/API_visual.png?raw=true "API Visualisation")
 
 ### HTML Plots
-
-<INSERT IMAGES BELOW>
+![Alt text](./visualization/HTML_visual.png?raw=true "HTML Visualisation")
 
 ### Websocket Plots
-
-<INSERT IMAGES BELOW>
+![Alt text](./visualization/WSS_visual.png?raw=true "WSS Visualisation")
 
 # Example Data
 Each scrape_ folder also contains a snippet of data of what we expect to receive and can be used to understand the structure of the data.
